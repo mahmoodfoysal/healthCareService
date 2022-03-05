@@ -6,7 +6,7 @@ import Login from '../../Login/Login';
 
 const Header = () => {
     let {history} = useHistory();
-    const {user, googleSignIn} = useFirebase();
+    const {user, logOut} = useFirebase()
     return (
         <div className='container'>
             <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -29,9 +29,11 @@ const Header = () => {
                             <li className="nav-item mx-3">
                                 <Link className="nav-link active" aria-current="page" to="/faq">FAQ</Link>
                             </li>
+                            <span>{user.email && user.displayName}</span>
+                            {user.displayName ? <button onClick={logOut}>Log Out</button>:
                             <Link to="/login">
                             <button className='btn btn-primary'>Log in</button>
-                            </Link>
+                            </Link>}
                             
                         </ul>
                     </div>

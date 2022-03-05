@@ -1,3 +1,9 @@
 .input-width {
-    width: 30%;
+    width: 300px;
+}
+.center {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid rgb(211, 245, 161); */
 }

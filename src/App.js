@@ -6,6 +6,7 @@ import Home from './components/Home/Home/Home';
 import Services from './components/Home/Services/Services';
 import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
+import Registration from './components/Registration/Registration';
 import Header from './components/Shared/Header/Header';
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/faq">
           <FAQ></FAQ>
+        </Route>
+        <Route path="/registration">
+          <Registration></Registration>
         </Route>
         <Route path="/login">
           <Login></Login>
