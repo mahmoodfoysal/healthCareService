@@ -1,5 +1,5 @@
 import initilizationAuthentication from "../Firebase/firebase.init"
-import { getAuth, signInWithPopup, GoogleAuthProvider,signOut, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider,signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 // firebase initilization
@@ -14,19 +14,45 @@ const auth = getAuth();
 const useFirebase = () => {
 // declear states here 
 const [user, setUser] = useState({});
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
 
     // handle registration 
     const handleRegistration = (e) => {
         e.preventDefault();
-        console.log(email, password)
         createUserWithEmailAndPassword(auth, email, password)
         .then((result) => {
             const user = result.user;
             setUser(user);
+            setUserName();
+            console.log(user);
         })
+    }
+
+    // handle login 
+    const handleLogin = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+        .then(result => {
+            const user = result.user;
+            setUser(user);
+            console.log(user);
+        })
+    }
+
+    // set user name 
+    const setUserName = () => {
+        updateProfile(auth.currentUser, {displayName: name})
+            .then(result => { })
+        
+    }
+
+    // full name input 
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+        console.log(e.target.value);
     }
 
     // email address input 
@@ -71,6 +97,8 @@ const [password, setPassword] = useState('')
         user,
         setUser,
         handleRegistration,
+        handleLogin,
+        handleNameChange,
         handleEmailChange,
         handlePasswordChange,
         logOut

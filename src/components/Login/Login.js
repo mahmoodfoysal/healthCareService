@@ -3,7 +3,7 @@ import useFirebase from '../../hooks/useFirebase';
 import './Login.css';
 const Login = () => {
     const {user,
-        handleRegistration,
+        handleLogin,
         handleEmailChange,
         handlePasswordChange,
         googleSignIn} = useFirebase();
@@ -11,7 +11,7 @@ const Login = () => {
         <div className='container'>
             <div className='center'>
             <div className=''>
-                <form onSubmit={handleRegistration}>
+                <form onSubmit={handleLogin}>
                     <h1 className='text-center text-success'>Please Login</h1>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -27,7 +27,7 @@ const Login = () => {
                             <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                     </div> */}
                     <p><strong>If you have not account?</strong> <Link to="/registration">Create New Account</Link></p>
-                    <button type="Login" className="btn btn-primary">Registration</button>
+                    <button type="Login" className="btn btn-primary">Sign In</button>
                 </form>
             </div>
             <br />
