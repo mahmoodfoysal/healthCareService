@@ -1,17 +1,44 @@
 import { Link } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import useAuth from '../../hooks/useAuth';
 import useFirebase from '../../hooks/useFirebase';
+
 import './Login.css';
 const Login = () => {
     const {user,
+        setUser,
         handleLogin,
         handleEmailChange,
         handlePasswordChange,
-        googleSignIn} = useFirebase();
+        googleSignIn} = useAuth();
+
+        
+
+        const location = useLocation();
+        const history = useHistory()
+        const redirect_uri = location.state?.from || '/home'
+
+        const handleGoogleLogin = () => {
+            googleSignIn()
+            .then(result => {
+                history.push(redirect_uri);
+                setUser(result.user);
+            })
+        }
+        const handleCustomLogin = (e) => {
+            e.preventDefault();
+            handleLogin()
+            .then(result => {
+                history.push(redirect_uri);
+                const user = result.user;
+                setUser(user);
+            })
+        }
     return (
         <div className='container'>
             <div className='center'>
             <div className=''>
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleCustomLogin}>
                     <h1 className='text-center text-success'>Please Login</h1>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -32,7 +59,7 @@ const Login = () => {
             </div>
             <br />
             
-            <button onClick={googleSignIn} className='btn btn-primary'>google</button>
+            <button onClick={handleGoogleLogin} className='btn btn-primary'>google</button>
             
             </div>
             

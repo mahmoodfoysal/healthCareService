@@ -4,12 +4,12 @@ import './SpecificService.css';
 
 
 const SpecificService = (props) => {
-    const { serviceType, icon } = props.service;
-    // const {history} = useHistory();
+    const {id, serviceType, icon, } = props.service;
+    const history = useHistory();
     return (
         <div>
             <div className="col">
-                <div className="card">
+                <div className="card" onClick={() => history.push(`/serviceDetails/${id}`)}>
                     <div className='text-center'>
                     <img style={{width:"75px", height:"75px"}} src={icon} className="card-img-top text-center" alt="Service Icon" />
                     </div>

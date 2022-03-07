@@ -13,10 +13,11 @@ const auth = getAuth();
 
 const useFirebase = () => {
 // declear states here 
-const [user, setUser] = useState({});
+const [user, setUser] = useState([]);
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [isLoading, setIsLoading] = useState(true);
 
 
     // handle registration 
@@ -33,13 +34,9 @@ const [password, setPassword] = useState('');
 
     // handle login 
     const handleLogin = (e) => {
-        e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            const user = result.user;
-            setUser(user);
-            console.log(user);
-        })
+        // e.preventDefault();
+        return signInWithEmailAndPassword(auth, email, password)
+
     }
 
     // set user name 
@@ -67,12 +64,9 @@ const [password, setPassword] = useState('');
 
     // google authentication 
     const googleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            setUser(user);
-        })
+        const auth = getAuth();
+        return signInWithPopup(auth, googleProvider)
+        
     }
     // onAuthChange 
     useEffect(() => {
@@ -80,6 +74,7 @@ const [password, setPassword] = useState('');
             if (user) {
               setUser(user)
             }
+            setIsLoading(false)
           });
     }, [])
     // registration 
@@ -87,10 +82,12 @@ const [password, setPassword] = useState('');
 
     // logOut 
     const logOut = () => {
+        setIsLoading(true)
         signOut(auth)
         .then(() => {
             setUser({});
         })
+        .finally(() => setIsLoading(false))
     }
     return {
         googleSignIn,

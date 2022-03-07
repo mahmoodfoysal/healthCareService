@@ -1,12 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 import Login from '../../Login/Login';
 
 const Header = () => {
     let {history} = useHistory();
-    const {user, logOut} = useFirebase()
+    const {user, logOut} = useAuth()
     return (
         <div className='container'>
             <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">

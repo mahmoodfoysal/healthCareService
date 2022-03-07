@@ -6,12 +6,15 @@ import Home from './components/Home/Home/Home';
 import Services from './components/Home/Services/Services';
 import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Registration from './components/Registration/Registration';
+import ServiceDetails from './components/ServiceDetails/ServiceDetails';
 import Header from './components/Shared/Header/Header';
+import AuthProvider from './Context/AuthProvider';
 
 function App() {
   return (
-    <div>
+      <AuthProvider>
       <BrowserRouter>
       <Header></Header>
       <Switch>
@@ -24,6 +27,9 @@ function App() {
         <Route path="/services">
           <Services></Services>
         </Route>
+        <PrivateRoute path="/serviceDetails/:id">
+          <ServiceDetails></ServiceDetails>
+        </PrivateRoute>
         <Route path="/about">
           <AboutUs></AboutUs>
         </Route>
@@ -42,7 +48,7 @@ function App() {
 
       </Switch>
       </BrowserRouter>
-    </div>
+      </AuthProvider>
   );
 }
 
