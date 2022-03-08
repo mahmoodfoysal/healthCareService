@@ -54,12 +54,12 @@ const Login = () => {
                             <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                     </div> */}
                     <p><strong>If you have not account?</strong> <Link to="/registration">Create New Account</Link></p>
-                    <button type="Login" className="btn btn-primary">Sign In</button>
+                    <button type="Login" className="btn button-background">Sign In</button>
                 </form>
             </div>
             <br />
             
-            <button onClick={handleGoogleLogin} className='btn btn-primary'>google</button>
+            <button onClick={handleGoogleLogin} className='btn button-background'>Sign In With Google</button>
             
             </div>
             

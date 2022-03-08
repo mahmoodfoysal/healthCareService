@@ -29,8 +29,8 @@ const Header = () => {
                             <li className="nav-item mx-3">
                                 <Link className="nav-link active" aria-current="page" to="/faq">FAQ</Link>
                             </li>
-                            <span>{user.email && user.displayName}</span>
-                            {user.displayName ? <button onClick={logOut}>Log Out</button>:
+                            <li className="nav-item mx-1"><strong>{user.email && 'Welcome,'} </strong>{user.displayName} </li>
+                            {user.displayName ? <button className='button-background' onClick={logOut}>Log Out</button>:
                             <Link to="/login">
                             <button className='btn btn-primary'>Log in</button>
                             </Link>}

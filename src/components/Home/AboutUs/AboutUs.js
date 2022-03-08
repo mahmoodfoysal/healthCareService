@@ -5,7 +5,7 @@ import banner2 from '../../../images/banner-2.png';
 const AboutUs = () => {
     return (
         <div className='container'>
-            <h1 className='text-center'>About Us</h1>
+            <h1 className='text-center mb-5 mt-5'>About Us</h1>
             <br />
             <div className='row'>
                 <div className='col-md-6'>

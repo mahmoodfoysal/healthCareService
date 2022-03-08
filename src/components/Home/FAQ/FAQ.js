@@ -4,7 +4,7 @@ import faq from '../../../images/faq.png';
 const FAQ = () => {
     return (
         <div className='container'>
-            <h1 className='text-center'>FAQ</h1>
+            <h1 className='text-center mb-5 mt-5'>FAQ</h1>
             <br />
             <div className='row'>
                 <div className='col-md-6'>

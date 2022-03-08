@@ -7,3 +7,14 @@
     align-items: center;
     /* border: 2px solid rgb(211, 245, 161); */
 }
+
+.button-background {
+    border-radius: 5px;
+    border: 2px forestgreen solid;
+    color: forestgreen;
+}
+.button-background:hover {
+    background-color: forestgreen;
+    color: white;
+    font-weight: 400;
+}

@@ -1,14 +1,30 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Registration = () => {
     const { user,
+        setUser,
         handleRegistration,
         handleNameChange,
         handleEmailChange,
         handlePasswordChange,
         googleSignIn } = useAuth();
+
+        const location = useLocation();
+        const history = useHistory()
+        const redirect_uri = location.state?.from || '/home'
+
+        const handleGoogleLogin = () => {
+            googleSignIn()
+            .then(result => {
+                history.push(redirect_uri);
+                setUser(result.user);
+            })
+        }
+
     return (
         <div>
             <div className='container'>
@@ -37,12 +53,12 @@ const Registration = () => {
                     </div> */}
 
                             <p><strong>If you have account?</strong> <Link to="/login">Please Login</Link></p>
-                            <button type="Login" className="btn btn-primary">Registration</button>
+                            <button type="Login" className="btn button-background">Registration</button>
                         </form>
                     </div>
                     <br />
 
-                    <button onClick={googleSignIn} className='btn btn-primary'>google</button>
+                    <button onClick={handleGoogleLogin} className='btn button-background'>Sign In With Google</button>
 
                 </div>
 
