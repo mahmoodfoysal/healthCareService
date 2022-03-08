@@ -9,6 +9,7 @@ import NotFound from './components/NotFound/NotFound';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Registration from './components/Registration/Registration';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
+import Footer from './components/Shared/Footer/Footer';
 import Header from './components/Shared/Header/Header';
 import AuthProvider from './Context/AuthProvider';
 
@@ -45,8 +46,8 @@ function App() {
         <Route exact path="*">
           <NotFound></NotFound>
         </Route>
-
       </Switch>
+      <Footer></Footer>
       </BrowserRouter>
       </AuthProvider>
   );
